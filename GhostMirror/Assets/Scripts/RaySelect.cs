@@ -15,12 +15,15 @@ public class RaySelect : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        if(Physics.Raycast(lightSource.transform.position,new Vector3(1,0,1),out hit))
+        Vector3 testDir = new Vector3(-180,-45,0);
+        if(Physics.Raycast(lightSource.transform.position,testDir,out hit))
         {
             //Transform hitObject = hit.transform;
            hitpos = new Vector3(hit.point.x+0.05f,hit.point.y+0.05f,hit.point.z);
             createLight();
+            print("?");
         }
+        Debug.DrawRay(lightSource.transform.position, testDir, Color.red,(1f/60f));
     }
     void createLight()
     {

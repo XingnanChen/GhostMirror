@@ -13,7 +13,7 @@ public class GyroManager : MonoBehaviour
     [SerializeField]
     private float rotateSpeed = 2f;
     private Rigidbody rb;
-
+    
     // Start is called before the first frame update
     void Start()
     {

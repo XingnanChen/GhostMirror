@@ -38,6 +38,10 @@ public class RaySelect : MonoBehaviour
             Debug.DrawRay(lightSource.transform.position, lightSource.transform.forward, Color.red, (1f / 60f));
             testLight.transform.rotation = ConvertRotation(Input.gyro.attitude);
             // Vector3 gyroRot = Input.gyro.rotationRate * rotateSpeed;
+            if (GameObject.Find("door").GetComponent<BoxCollider>().bounds.Contains(hitpos))
+            {
+
+            }
         }
 
 

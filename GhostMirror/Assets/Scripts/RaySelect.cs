@@ -5,7 +5,7 @@ using UnityEngine;
 public class RaySelect : MonoBehaviour
 {
     public GameObject testLight;
-    private Vector3 hitpos = new Vector3();
+    public static Vector3 hitpos = new Vector3();
     private Sprite mySprite;
     private GameObject previousLight;
     public GameObject lightSource;
@@ -38,6 +38,10 @@ public class RaySelect : MonoBehaviour
             Debug.DrawRay(lightSource.transform.position, lightSource.transform.forward, Color.red, (1f / 60f));
             testLight.transform.rotation = ConvertRotation(Input.gyro.attitude);
             // Vector3 gyroRot = Input.gyro.rotationRate * rotateSpeed;
+            if (GameObject.Find("door").GetComponent<BoxCollider>().bounds.Contains(hitpos))
+            {
+
+            }
         }
 
 

@@ -1917,6 +1917,7 @@ MonoBehaviour:
   camPosition: {x: 1.66, y: 2.013, z: -3.481}
   gameObjects:
   - {fileID: 633785751}
+  - {fileID: 1842068563}
   parentObject: {fileID: 801930323}
 --- !u!4 &801930325
 Transform:
@@ -4833,6 +4834,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: -11.927001, y: -51.409004, z: -4.537}
+--- !u!1 &1842068563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 5d10ce47ab9f13849983264e1ef4a6b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1779117284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1842068564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842068563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7570160dbdd07c142a13481b86a0a59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camPosition: {x: 4.019001, y: 1.13, z: 1.01}
+  gameObjects: []
+  parentObject: {fileID: 801930323}
+--- !u!65 &1842068565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842068563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.99, y: 1, z: 1}
+  m_Center: {x: -0.15, y: 2.14, z: -0.71}
 --- !u!1001 &1918834024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5422,6 +5457,7 @@ MonoBehaviour:
   parent: {fileID: 801930323}
   children:
   - {fileID: 633785751}
+  - {fileID: 1842068563}
 --- !u!1001 &2127782543
 PrefabInstance:
   m_ObjectHideFlags: 0

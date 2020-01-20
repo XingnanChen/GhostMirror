@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class ObjectFade : MonoBehaviour
 {
-    public GameObject g;
-
+    private Renderer rend;
+    public GameObject Faderay;
+    public GameObject Fadecamera;
     private void Start()
     {
+        rend = GetComponent<Renderer>();
+        rend.enabled = false;
+
         
-        
+    }
+
+    private void Update()
+    {
+        Vector3 lightPos = RaySelect.hitpos;
+        RaycastHit hitInfo;
+        Ray ray1 = new Ray(Faderay.GetComponent<RaySelect>().GetLightSourcePosition(), Faderay.GetComponent<RaySelect>().GetLightSourceDir());
+        if (gameObject.GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "mirror")
+        {
+            rend.enabled = true;
+        }
     }
 
     /*void Update()

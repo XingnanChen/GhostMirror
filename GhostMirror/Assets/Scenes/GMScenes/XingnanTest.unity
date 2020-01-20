@@ -640,6 +640,8 @@ MonoBehaviour:
   button: {fileID: 326511682}
   camera: {fileID: 2115320564}
   ray: {fileID: 770194808}
+  smoothTime: 0.3
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &328162487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: caf9212dcfdaf754e9f15db1016d87d6,
@@ -2141,6 +2143,8 @@ MonoBehaviour:
   button: {fileID: 845604009}
   camera: {fileID: 2115320564}
   ray: {fileID: 770194808}
+  smoothTime: 1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &855542017
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class RaySelect : MonoBehaviour
     private Rigidbody rb;
     private Vector3 gyroRotation;
 
+  //  [SerializeField] private AudioClip ghostRevealing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class RaySelect : MonoBehaviour
             // Vector3 gyroRot = Input.gyro.rotationRate * rotateSpeed;
             if (GameObject.Find("door").GetComponent<BoxCollider>().bounds.Contains(hitpos))
             {
-
+          //      SoundManager.Instance.PlaySFX(ghostRevealing);
             }
         }
 
@@ -66,7 +68,7 @@ public class RaySelect : MonoBehaviour
 
     private Quaternion ConvertRotation(Quaternion q)
     {
-        return Quaternion.Euler(90, 90, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+        return Quaternion.Euler(90, 0, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
     }
 
     public Vector3 GetHitPosition()

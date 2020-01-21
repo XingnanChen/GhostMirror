@@ -640,6 +640,8 @@ MonoBehaviour:
   button: {fileID: 326511682}
   camera: {fileID: 2115320564}
   ray: {fileID: 770194808}
+  smoothTime: 0.3
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &328162487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: caf9212dcfdaf754e9f15db1016d87d6,
@@ -2141,6 +2143,8 @@ MonoBehaviour:
   button: {fileID: 845604009}
   camera: {fileID: 2115320564}
   ray: {fileID: 770194808}
+  smoothTime: 0.3
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &855542017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4730,7 +4734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822251684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.743, y: 1.941, z: 1.35}
+  m_LocalPosition: {x: 3.933, y: 1.941, z: 1.245}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4961,7 +4965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7570160dbdd07c142a13481b86a0a59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camPosition: {x: 4.019001, y: 1.13, z: 1.01}
+  camPosition: {x: 4.019001, y: 1.99, z: 0.02}
   gameObjects: []
   parentObject: {fileID: 801930323}
 --- !u!65 &1842068565

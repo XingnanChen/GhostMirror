@@ -53,14 +53,14 @@ public class RaySelect : MonoBehaviour
         {
             previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
             previousLight.transform.eulerAngles = gyroRotation;
-            previousLight.transform.Rotate(Vector3.right * 180, Space.World);
+            previousLight.transform.Rotate(Vector3.right * 90, Space.World);
         }
         else
         {
             Destroy(previousLight);
             previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
             previousLight.transform.eulerAngles = gyroRotation;
-            previousLight.transform.Rotate(Vector3.right * 180, Space.World);
+            previousLight.transform.Rotate(Vector3.right * 90, Space.World);
         }
     }
 

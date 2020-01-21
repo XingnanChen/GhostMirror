@@ -11,10 +11,26 @@ public class ObjectFade : MonoBehaviour
 
     private void Start()
     {
+        /*rend = GetComponent<Renderer>();
+        rend.enabled = false;*/
         rend = GetComponent<Renderer>();
-        rend.enabled = false;
+        Color c = rend.material.color;
+        c.a = 0f;
+        rend.material.color = c;
 
-        
+
+    }
+
+    IEnumerator FadeIn()
+    {
+        for (float f = 0.05f; f <= 1; f += 0.05f)
+        {
+            Color c = rend.material.color;
+            c.a = f;
+            rend.material.color = c;
+            print("!");
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     private void Update()
@@ -24,12 +40,18 @@ public class ObjectFade : MonoBehaviour
         Ray ray1 = new Ray(Faderay.GetComponent<RaySelect>().GetLightSourcePosition(), Faderay.GetComponent<RaySelect>().GetLightSourceDir());
         if (gameObject.GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "mirror")
         {
-            rend.enabled = true;
+            //rend.enabled = true;
+            StartCoroutine("FadeIn");
             isrendered = true;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         if(isrendered == true)
         {
-            gameObject.transform.position = lightPos;
+            //gameObject.transform.position = lightPos;
+            Vector3 ghostPosition = lightPos;
+            ghostPosition.z -= 0.1f;
+            gameObject.transform.position = ghostPosition;
+
         }
     }
 

@@ -7,6 +7,8 @@ public class ObjectFade : MonoBehaviour
     private Renderer rend;
     public GameObject Faderay;
     public GameObject Fadecamera;
+    private bool isrendered = false;
+
     private void Start()
     {
         rend = GetComponent<Renderer>();
@@ -23,6 +25,11 @@ public class ObjectFade : MonoBehaviour
         if (gameObject.GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "mirror")
         {
             rend.enabled = true;
+            isrendered = true;
+        }
+        if(isrendered == true)
+        {
+            gameObject.transform.position = lightPos;
         }
     }
 

@@ -8,6 +8,7 @@ public class ObjectFade : MonoBehaviour
     public GameObject Faderay;
     public GameObject Fadecamera;
     private bool isrendered = false;
+    private bool isscaled = false;
 
     private void Start()
     {
@@ -52,6 +53,20 @@ public class ObjectFade : MonoBehaviour
             ghostPosition.z -= 0.1f;
             gameObject.transform.position = ghostPosition;
 
+        }
+        if (GameObject.Find("photo_3_lowres_missing_mother").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "photo_3_lowres_missing_mother" && isrendered == true && isscaled == false)
+        {
+            //rend.enabled = true;
+            isscaled = true;
+            gameObject.transform.localScale += new Vector3(-0.04f, -0.04f, 0);
+            print("change");
+        }
+
+        if (isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "InitCameraObject")
+        {
+            //rend.enabled = true;
+            isscaled = false;
+            gameObject.transform.localScale += new Vector3(0.04f, 0.04f, 0);
         }
     }
 

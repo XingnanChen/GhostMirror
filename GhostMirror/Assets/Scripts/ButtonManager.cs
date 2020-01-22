@@ -27,7 +27,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-   public void MoveForward()
+   void MoveForward()
     {
         if (GameObject.Find("ForwardButton").GetComponent<ButtonManager>().cameraMoving || GameObject.Find("BackButton").GetComponent<ButtonManager>().cameraMoving)
         {
@@ -50,20 +50,14 @@ public class ButtonManager : MonoBehaviour
                 camera.GetComponent<CameraList>().children = gameObject.GetComponent<CameraPoint>().gameObjects;
                 camera.GetComponent<CameraList>().cameraDir = gameObject.GetComponent<CameraPoint>().cameraDir;
 
-               // print(camera.GetComponent<CameraList>().cameraDir);
-
                 camPos = gameObject.GetComponent<CameraPoint>().camPosition;
                 cameraMoving = true;
-                
-                //camera.transform.position = camPos;
 
-
-                //print(camera.GetComponent<CameraList>().parent.name);
-                //foreach (GameObject t in camera.GetComponent<CameraList>().children)
-                //{
-                //    print("children" + t.name);
-                //}
-                //;
+                print("Fparent "+camera.GetComponent<CameraList>().parent.name);
+                foreach (GameObject t in camera.GetComponent<CameraList>().children)
+                {
+                    print("Fchildren " + t.name);
+                }
                 break;
             }
          //   else print(false);
@@ -71,12 +65,12 @@ public class ButtonManager : MonoBehaviour
       
     }
 
-    public void MoveBack()
+    void MoveBack()
     {
         // trigger = true;
-        if (GameObject.Find("ForwardButton").GetComponent<ButtonManager>().cameraMoving|| GameObject.Find("BackButton").GetComponent<ButtonManager>().cameraMoving)
+        if (GameObject.Find("ForwardButton").GetComponent<ButtonManager>().cameraMoving || GameObject.Find("BackButton").GetComponent<ButtonManager>().cameraMoving)
         {
-            print(true);
+            //print(true);
             return;
         }
         camera.GetComponent<CameraList>().parent = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().parentObject;
@@ -84,16 +78,16 @@ public class ButtonManager : MonoBehaviour
 
         camPos = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().camPosition;
         camera.GetComponent<CameraList>().cameraDir = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().cameraDir;
-       // print(camera.GetComponent<CameraList>().cameraDir);
         cameraMoving = true;
-      //  camera.transform.position = camPos;
 
-       // print("parent"+camera.GetComponent<CameraList>().parent.name);
+       // camera.transform.position = camPos;
 
-        //foreach(GameObject gameObject in camera.GetComponent<CameraList>().children)
-        //{
-        //    print("children"+gameObject.name);
-        //}
+        print("backparent " + camera.GetComponent<CameraList>().parent.name);
+
+        foreach (GameObject gameObject in camera.GetComponent<CameraList>().children)
+        {
+            print("backchildren " + gameObject.name);
+        }
     }
 
     private void FixedUpdate()

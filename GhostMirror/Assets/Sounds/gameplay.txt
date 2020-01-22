@@ -1,0 +1,19 @@
+游戏开始：播放BGM“Origin BGM”
+
+点击门发现打不开：
+播放SFX“door cant open”
+
+点击镜子，发现鬼影→鬼影存入镜子：
+播放SFX“ghost revealing”→紧接着播放SFX“transfer in”
+
+点击照片墙，鬼影存入照片→出现绳子（指针）→绳子（指针）存入镜子：
+播放SFX“ghost transfer out”→播放SFX“ghost in photo appear”→播放SFX“transfer in”
+
+退出照片墙，发现麻将桌上出现女鬼：
+播放SFX“exit photo ghost appear”同时切换BGM到“BGM2”→播放SFX“mahjong”
+
+调查时钟，将指针归位后：
+播放SFX“hand transfer out”
+
+退出时钟界面，发现碗在动→照出鬼影→打开房门离开房间
+播放SFX“bowl”同时BGM切成“BGM3”→照到鬼影时播放SFX“ghost revealing”→等动画播到开门时播放SFX“door1”或者“door2”（看看哪个效果好留哪个）

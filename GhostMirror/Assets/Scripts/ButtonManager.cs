@@ -45,9 +45,12 @@ public class ButtonManager : MonoBehaviour
                // gameObject.GetComponent<BoxCollider>().bounds.Contains(hitPosition)
                
                 // trigger = true;
-                print(camera.transform.position);
+           //     print(camera.transform.position);
                 camera.GetComponent<CameraList>().parent = gameObject;
                 camera.GetComponent<CameraList>().children = gameObject.GetComponent<CameraPoint>().gameObjects;
+                camera.GetComponent<CameraList>().cameraDir = gameObject.GetComponent<CameraPoint>().cameraDir;
+
+               // print(camera.GetComponent<CameraList>().cameraDir);
 
                 camPos = gameObject.GetComponent<CameraPoint>().camPosition;
                 cameraMoving = true;
@@ -55,11 +58,11 @@ public class ButtonManager : MonoBehaviour
                 //camera.transform.position = camPos;
 
 
-                print(camera.GetComponent<CameraList>().parent.name);
-                foreach (GameObject t in camera.GetComponent<CameraList>().children)
-                {
-                    print("children" + t.name);
-                }
+                //print(camera.GetComponent<CameraList>().parent.name);
+                //foreach (GameObject t in camera.GetComponent<CameraList>().children)
+                //{
+                //    print("children" + t.name);
+                //}
                 //;
                 break;
             }
@@ -79,22 +82,24 @@ public class ButtonManager : MonoBehaviour
         camera.GetComponent<CameraList>().children = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().gameObjects;
 
         camPos = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().camPosition;
+        camera.GetComponent<CameraList>().cameraDir = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().cameraDir;
+       // print(camera.GetComponent<CameraList>().cameraDir);
         cameraMoving = true;
       //  camera.transform.position = camPos;
 
-        print("parent"+camera.GetComponent<CameraList>().parent.name);
+       // print("parent"+camera.GetComponent<CameraList>().parent.name);
 
-        foreach(GameObject gameObject in camera.GetComponent<CameraList>().children)
-        {
-            print("children"+gameObject.name);
-        }
+        //foreach(GameObject gameObject in camera.GetComponent<CameraList>().children)
+        //{
+        //    print("children"+gameObject.name);
+        //}
     }
 
     private void FixedUpdate()
     {
         if (cameraMoving)
         {
-            print(true);
+       //     print(true);
             camera.transform.position = Vector3.SmoothDamp(camera.transform.position, camPos, ref velocity, smoothTime);
             if (camera.transform.position == camPos)
             {

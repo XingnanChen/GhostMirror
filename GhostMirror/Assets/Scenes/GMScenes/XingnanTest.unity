@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04409629, g: 0.06270094, b: 0.10013145, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3377,22 +3377,22 @@ PrefabInstance:
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.012155328
+      value: -0.0014836092
       objectReference: {fileID: 0}
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99992615
+      value: 0.9999989
       objectReference: {fileID: 0}
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
@@ -3407,7 +3407,7 @@ PrefabInstance:
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.393
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 3614822026588355341, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7570160dbdd07c142a13481b86a0a59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camPosition: {x: -0.5, y: 1.35, z: -0.04}
+  camPosition: {x: 1.19, y: 1.78, z: -0.04}
   gameObjects: []
   parentObject: {fileID: 801930323}
   cameraDir: Left

@@ -27,7 +27,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-   void MoveForward()
+   public void MoveForward()
     {
         if (GameObject.Find("ForwardButton").GetComponent<ButtonManager>().cameraMoving || GameObject.Find("BackButton").GetComponent<ButtonManager>().cameraMoving)
         {
@@ -71,11 +71,12 @@ public class ButtonManager : MonoBehaviour
       
     }
 
-    void MoveBack()
+    public void MoveBack()
     {
         // trigger = true;
         if (GameObject.Find("ForwardButton").GetComponent<ButtonManager>().cameraMoving|| GameObject.Find("BackButton").GetComponent<ButtonManager>().cameraMoving)
         {
+            print(true);
             return;
         }
         camera.GetComponent<CameraList>().parent = camera.GetComponent<CameraList>().parent.GetComponent<CameraPoint>().parentObject;

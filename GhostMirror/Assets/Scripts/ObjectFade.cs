@@ -9,7 +9,11 @@ public class ObjectFade : MonoBehaviour
     public GameObject Fadecamera;
     private bool isrendered = false;
     private bool isscaled = false;
-
+    private float collisionTime = 0;
+    private Renderer photoRenderer;
+    private Renderer ifRope;
+    private Renderer hangingGhost;
+    private bool displayHanging = false;
     private void Start()
     {
         /*rend = GetComponent<Renderer>();
@@ -18,8 +22,17 @@ public class ObjectFade : MonoBehaviour
         Color c = rend.material.color;
         c.a = 0f;
         rend.material.color = c;
-
-
+        photoRenderer = GameObject.Find("photo_3_lowres").GetComponent<Renderer>();
+        Color pc = photoRenderer.material.color;
+        pc.a = 0f;
+        photoRenderer.material.color = pc;
+        ifRope = GameObject.Find("hanging_rope").GetComponent<Renderer>();
+        ifRope.enabled = false;
+        hangingGhost = GameObject.Find("mouse_1.4_0").GetComponent<Renderer>();
+        /*Color ghostColor = hangingGhost.material.color;
+        ghostColor.a = 0f;
+        hangingGhost.material.color = ghostColor;*/
+        hangingGhost.enabled = false;
     }
 
     IEnumerator FadeIn()
@@ -32,6 +45,55 @@ public class ObjectFade : MonoBehaviour
             print("!");
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    IEnumerator PhotoFadeIn()
+    {
+        for (float f = 0.05f; f <= 1; f += 0.05f)
+        {
+            Color pc = photoRenderer.material.color;
+            pc.a = f;
+            photoRenderer.material.color = pc;
+            print("!");
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator HangGhostFade()
+    {
+        for (float f = 0.05f; f <= 1; f += 0.05f)
+        {
+            Color ghostC = hangingGhost.material.color;
+            ghostC.a = f;
+            hangingGhost.material.color = ghostC;
+            print("!");
+            yield return new WaitForSeconds(0.05f);
+        }
+
+    }
+
+    IEnumerator HangGhostFadeOut()
+    {
+        for (float f = 1f; f >= 0.001f; f -= 0.05f)
+        {
+            Color ghostC = hangingGhost.material.color;
+            ghostC.a = f;
+            hangingGhost.material.color = ghostC;
+            print("!");
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+    public void FadeOut()
+    {
+        /*for (float f = 1f; f >= -0.05f; f -= 0.05f)
+        {
+            Color c = rend.material.color;
+            c.a = f;
+            rend.material.color = c;
+            print("!");
+            yield return new WaitForSeconds(0.2f);
+        }*/
+        rend.enabled = false;
     }
 
     private void Update()
@@ -60,6 +122,19 @@ public class ObjectFade : MonoBehaviour
             isscaled = true;
             gameObject.transform.localScale += new Vector3(-0.04f, -0.04f, 0);
             print("change");
+            
+        }
+
+        if(isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "photo_3_lowres_missing_mother")
+        {
+            collisionTime += Time.deltaTime;
+            if(collisionTime >= 3f)
+            {
+                StartCoroutine("PhotoFadeIn");
+                FadeOut();
+                ifRope.enabled = true;
+                displayHanging = true;
+            }
         }
 
         if (isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "InitCameraObject")
@@ -68,7 +143,25 @@ public class ObjectFade : MonoBehaviour
             isscaled = false;
             gameObject.transform.localScale += new Vector3(0.04f, 0.04f, 0);
         }
+
+        if(displayHanging == true)
+        {
+            if(GameObject.Find("mouse_1.4_0").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                //StartCoroutine("HangGhostFade");
+                hangingGhost.enabled = true;
+            }
+            else if(GameObject.Find("mouse_1.4_0").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                //StartCoroutine("HangGhostFadeOut");
+                hangingGhost.enabled = false;
+            }
+
+        }
+       
     }
+
+    
 
     /*void Update()
     {

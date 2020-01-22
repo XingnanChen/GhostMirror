@@ -14,6 +14,9 @@ public class ObjectFade : MonoBehaviour
     private Renderer ifRope;
     private Renderer hangingGhost;
     private bool displayHanging = false;
+    private Renderer picture1;
+    private Renderer picture2;
+    private Renderer picture2T;
     private void Start()
     {
         /*rend = GetComponent<Renderer>();
@@ -22,7 +25,7 @@ public class ObjectFade : MonoBehaviour
         Color c = rend.material.color;
         c.a = 0f;
         rend.material.color = c;
-        photoRenderer = GameObject.Find("photo_3_lowres").GetComponent<Renderer>();
+        photoRenderer = GameObject.Find("photo_3_lowres_mirrior").GetComponent<Renderer>();
         Color pc = photoRenderer.material.color;
         pc.a = 0f;
         photoRenderer.material.color = pc;
@@ -33,6 +36,10 @@ public class ObjectFade : MonoBehaviour
         ghostColor.a = 0f;
         hangingGhost.material.color = ghostColor;*/
         hangingGhost.enabled = false;
+        picture1 = GameObject.Find("picture (1)").GetComponent<Renderer>();
+        picture2 = GameObject.Find("picture (2)").GetComponent<Renderer>();
+        picture2T = GameObject.Find("picture (8)").GetComponent<Renderer>();
+        picture2T.enabled = false;
     }
 
     IEnumerator FadeIn()
@@ -55,7 +62,7 @@ public class ObjectFade : MonoBehaviour
             pc.a = f;
             photoRenderer.material.color = pc;
             print("!");
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -116,7 +123,7 @@ public class ObjectFade : MonoBehaviour
             gameObject.transform.position = ghostPosition;
 
         }
-        if (GameObject.Find("photo_3_lowres_missing_mother").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "photo_3_lowres_missing_mother" && isrendered == true && isscaled == false)
+        if (GameObject.Find("picture (1)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "picture (1)" && isrendered == true && isscaled == false)
         {
             //rend.enabled = true;
             isscaled = true;
@@ -125,7 +132,7 @@ public class ObjectFade : MonoBehaviour
             
         }
 
-        if(isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "photo_3_lowres_missing_mother")
+        if(isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "picture (1)")
         {
             collisionTime += Time.deltaTime;
             if(collisionTime >= 3f)
@@ -134,6 +141,7 @@ public class ObjectFade : MonoBehaviour
                 FadeOut();
                 ifRope.enabled = true;
                 displayHanging = true;
+                
             }
         }
 
@@ -158,7 +166,20 @@ public class ObjectFade : MonoBehaviour
             }
 
         }
-       
+
+        if (Fadecamera.GetComponent<CameraList>().parent.name == "picture (1)")
+        {
+            if(GameObject.Find("picture (2)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture2T.enabled = true;
+            }
+            else
+            {
+                picture2T.enabled = false;
+            }
+        }
+
+
     }
 
     

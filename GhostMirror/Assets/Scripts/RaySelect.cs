@@ -9,9 +9,12 @@ public class RaySelect : MonoBehaviour
     private Sprite mySprite;
     private GameObject previousLight;
     public GameObject lightSource;
+    public GameObject camera;
     // Update is called once per frame
     private Rigidbody rb;
     private Vector3 gyroRotation;
+
+    private string cameraDir;
 
   //  [SerializeField] private AudioClip ghostRevealing;
 
@@ -68,7 +71,30 @@ public class RaySelect : MonoBehaviour
 
     private Quaternion ConvertRotation(Quaternion q)
     {
-        return Quaternion.Euler(90, 0, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+        cameraDir = camera.GetComponent<CameraList>().cameraDir;
+        float smooth = 5.0f;
+        float tiltAngle = 90f;
+        if (cameraDir.Equals("Forward"))
+        {
+            print("forward");
+
+            Quaternion target = Quaternion.Euler(0, 0, 0);
+            camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, target, Time.deltaTime*smooth);
+            return Quaternion.Euler(90, 0, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+        }
+        else if (cameraDir.Equals("Left"))
+        {
+            print("left");
+            Quaternion target = Quaternion.Euler(0, -90, 0);
+            camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, target, Time.deltaTime*smooth);
+            print(camera.transform.rotation);
+            return Quaternion.Euler(90, -90, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+        }
+        else
+        {
+            print("right");
+            return Quaternion.Euler(90, 0, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+        }
     }
 
     public Vector3 GetHitPosition()

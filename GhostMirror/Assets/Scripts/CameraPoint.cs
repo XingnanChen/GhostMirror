@@ -7,6 +7,7 @@ public class CameraPoint : MonoBehaviour
     public Vector3 camPosition;
     public List<GameObject> gameObjects;
     public GameObject parentObject;
+    public string cameraDir;
     // Start is called before the first frame update
     void Start()
     {

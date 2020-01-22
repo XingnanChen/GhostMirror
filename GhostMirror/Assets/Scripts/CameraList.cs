@@ -6,4 +6,5 @@ public class CameraList : MonoBehaviour
 {
     public GameObject parent;
     public List<GameObject> children;
+    public string cameraDir;
 }

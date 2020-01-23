@@ -11,6 +11,7 @@ public class ObjectFade : MonoBehaviour
     private bool isrendered = false;
     private bool isscaled = false;
     private float collisionTime = 0;
+    private float ghostTime = 0;
     private Renderer photoRenderer;
     private Renderer ifRope;
     private Renderer hangingGhost;
@@ -38,6 +39,7 @@ public class ObjectFade : MonoBehaviour
     private bool timeEnd = false;
     private bool keyscaled = false;
     private Renderer trueHourRenderer;
+    public static bool fatherDisplay = false;
     private void Start()
     {
         /*rend = GetComponent<Renderer>();
@@ -80,6 +82,7 @@ public class ObjectFade : MonoBehaviour
         picture8T = GameObject.Find("picture (11)").GetComponent<Renderer>();
         picture8T.enabled = false;
         hourHand = GameObject.Find("hour_hand");
+        hourHand.transform.Rotate(0, 0, -180);
         handRenderer = hourHand.GetComponent<Renderer>();
         Color handColor = handRenderer.material.color;
         handColor.a = 0;
@@ -152,7 +155,7 @@ public class ObjectFade : MonoBehaviour
 
     IEnumerator KeyFadeIn()
     {
-        for (float f = 0.05f; f <= 1; f += 0.05f)
+        for (float f = 0.05f; f <= 0.95; f += 0.05f)
         {
             Color c = handRenderer.material.color;
             c.a = f;
@@ -169,9 +172,18 @@ public class ObjectFade : MonoBehaviour
         if (gameObject.GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) && Fadecamera.GetComponent<CameraList>().parent.name == "mirror")
         {
             //rend.enabled = true;
+            
+            ghostTime += Time.deltaTime;
+            
+            if (ghostTime>=2f)
+            {
+                isrendered = true;
+                print("rendered");
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
             StartCoroutine("FadeIn");
-            isrendered = true;
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            
+
         }
         if(isrendered == true)
         {
@@ -185,7 +197,7 @@ public class ObjectFade : MonoBehaviour
         {
             //rend.enabled = true;
             isscaled = true;
-            gameObject.transform.localScale += new Vector3(-0.04f, -0.04f, 0);
+            gameObject.transform.localScale += new Vector3(-0.01f, -0.01f, 0);
             print("change");
             
         }
@@ -212,7 +224,7 @@ public class ObjectFade : MonoBehaviour
         {
             //rend.enabled = true;
             isscaled = false;
-            gameObject.transform.localScale += new Vector3(0.04f, 0.04f, 0);
+            gameObject.transform.localScale += new Vector3(0.01f, 0.01f, 0);
         }
 
         if(displayHanging == true)
@@ -334,6 +346,7 @@ public class ObjectFade : MonoBehaviour
             {
                 trueHourRenderer.enabled = true;
                handRenderer.enabled = false;
+                fatherDisplay = true;
             }
         }
 

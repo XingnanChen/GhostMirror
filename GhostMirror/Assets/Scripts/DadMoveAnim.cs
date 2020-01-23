@@ -11,32 +11,43 @@ public class DadMoveAnim : MonoBehaviour
     public float smoothTime = 3.0f;
     public Vector3 velocity = Vector3.zero;
     private bool stopWalking;
-
+    private bool endStart = false;
     public GameObject ghost;
     // Start is called before the first frame update
     void Start()
     {
-        playAnim = true;
+        playAnim = false;
         anim = GetComponent<Animator>();
         stopWalking = false;
+        transform.position = new Vector3(0, 0, 100);
+       
     }
      
     // Update i s called once per frame
     void Update()
     {
-        if (playAnim)
+        playAnim = ObjectFade.fatherDisplay;
+        if (playAnim && endStart == false)
         {
+            transform.position = new Vector3(3.531f, 0, 0.51f);
+            endStart = true;
+            GameObject.Find("door").transform.position = new Vector3(100, 100, 100);
+        }
+        if (endStart == true&&GameObject.Find("Main Camera").GetComponent<CameraList>().parent.name == "InitCameraObject")
+        {           
             if (!stopWalking)
             {
                 //this.transform.Translate(moveSpeed *Time.deltaTime *(-0.5f), 0, 0);
                 this.transform.position = Vector3.SmoothDamp(this.transform.position, stopPosition, ref velocity, smoothTime);
 
             }
-            if (this.transform.position.x-stopPosition.x <0.1f)
+            if (this.transform.position.x - stopPosition.x < 0.1f)
             {
-                GameObject.Destroy(ghost);
+               GameObject.Destroy(ghost);
+               
             }
 
+           
         }
     }
 

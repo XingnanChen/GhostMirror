@@ -115,7 +115,11 @@ public class RaySelect : MonoBehaviour
         }
         else if (cameraDir.Equals("Left"))
         {
-            //previousLight.transform.Rotate((new Vector3(1, -1, 0)) * 90, Space.World);
+            previousLight.transform.Rotate((new Vector3(0, 1, 0)) * 90, Space.World);
+        }
+        else if (cameraDir.Equals("Down"))
+        {
+            previousLight.transform.Rotate((new Vector3(2, 0, 0)) * 90, Space.World);
         }
     }
 
@@ -138,10 +142,10 @@ public class RaySelect : MonoBehaviour
         }
         else if (cameraDir.Equals("Down"))
         {
-            Quaternion target = Quaternion.Euler(0, -90, 0);
+            Quaternion target = Quaternion.Euler(90, 0, 0);
             camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, target, Time.deltaTime * smooth);
             // print(camera.transform.rotation);
-            return Quaternion.Euler(90, -90, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
+            return Quaternion.Euler(180, 0, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
         }
         else
         {

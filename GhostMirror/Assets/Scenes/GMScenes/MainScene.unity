@@ -178,7 +178,8 @@ MonoBehaviour:
   ray: {fileID: 640663687}
   smoothTime: 0.3
   velocity: {x: 0, y: 0, z: 0}
-  doorLocked: {fileID: 0}
+  doorLocked: {fileID: 8300000, guid: 5329ba7dcd9285345b2dddbaf8fe0295, type: 3}
+  ghoshRevealing: {fileID: 8300000, guid: 5d60147cbe7ed4e4cba5e58f0f513389, type: 3}
 --- !u!114 &12588749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5797,6 +5798,7 @@ MonoBehaviour:
   smoothTime: 0.3
   velocity: {x: 0, y: 0, z: 0}
   doorLocked: {fileID: 8300000, guid: 5329ba7dcd9285345b2dddbaf8fe0295, type: 3}
+  ghoshRevealing: {fileID: 8300000, guid: 5d60147cbe7ed4e4cba5e58f0f513389, type: 3}
 --- !u!1 &956472559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 84d292b88053b7d42b369033f3aa2d9e,
@@ -6550,10 +6552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d65fc6b8c469f94eadb645110709bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  upSpeed: 2
-  maxSpeed: 10
-  rotateSpeed: 2
 --- !u!1 &1225117706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3614822026588355328, guid: 5e3e1ed8e41548a44acd90d5ea799543,
@@ -6717,6 +6715,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Faderay: {fileID: 640663687}
   Fadecamera: {fileID: 1225117706}
+  ghoshOut: {fileID: 8300000, guid: d888a0139ef33b440afa8f4e04b4b4a0, type: 3}
+  handOut: {fileID: 8300000, guid: d185b40f437c08241be02ee421c02a6e, type: 3}
+  exitPhotoGhostAppear: {fileID: 8300000, guid: 5d60147cbe7ed4e4cba5e58f0f513389,
+    type: 3}
 --- !u!65 &1295496273
 BoxCollider:
   m_ObjectHideFlags: 0

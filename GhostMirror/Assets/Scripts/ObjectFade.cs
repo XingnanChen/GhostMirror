@@ -40,6 +40,8 @@ public class ObjectFade : MonoBehaviour
     private bool keyscaled = false;
     private Renderer trueHourRenderer;
     public static bool fatherDisplay = false;
+    private bool ghostOnceMusic = false;
+    private bool ghostOutPhoto = false;
 
     [SerializeField] private AudioClip ghoshOut;
     [SerializeField] private AudioClip handOut;
@@ -210,14 +212,15 @@ public class ObjectFade : MonoBehaviour
         if(isscaled == true && Fadecamera.GetComponent<CameraList>().parent.name == "picture (1)")
         {
             collisionTime += Time.deltaTime;
-            if(collisionTime >= 3f)
+
+            if (collisionTime >= 3f && ghostOutPhoto == false)
             {
-                SoundManager.Instance.PlaySFX(ghoshOut);
+                SoundManager.Instance.PlaySFX(ghoshOut,0.1f);
                 StartCoroutine("PhotoFadeIn");
                 FadeOut();
                 ifRope.enabled = true;
+                ghostOutPhoto = true;
 
-                SoundManager.Instance.PlaySFX(exitPhotoGhostAppear);
                 displayHanging = true;
                 StartCoroutine("KeyFadeIn");
                 renderKey = true;
@@ -241,6 +244,11 @@ public class ObjectFade : MonoBehaviour
             {
                 //StartCoroutine("HangGhostFade");
                 hangingGhost.enabled = true;
+                if(ghostOnceMusic == false)
+                {
+                    SoundManager.Instance.PlaySFX(exitPhotoGhostAppear,0.3f);
+                    ghostOnceMusic = true;
+                }
                 /*GameObject postVolume = GameObject.Find("Light").transform.Find("PostProcess").gameObject;
                 PostProcessVolume changePost = postVolume.GetComponent <PostProcessVolume>();
                 //changePost.profile.AddSettings<ColorGrading>();
@@ -352,7 +360,7 @@ public class ObjectFade : MonoBehaviour
         {
             if(hourHand.transform.rotation.eulerAngles.z>=240 && hourHand.transform.rotation.eulerAngles.z<=245)
             {
-                SoundManager.Instance.PlaySFX(handOut);
+                SoundManager.Instance.PlaySFX(handOut,0.3f);
                 trueHourRenderer.enabled = true;
                handRenderer.enabled = false;
                 fatherDisplay = true;

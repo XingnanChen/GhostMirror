@@ -12,11 +12,10 @@ public class RaySelect : MonoBehaviour
     public GameObject camera;
     // Update is called once per frame
     private Rigidbody rb;
-    private Vector3 gyroRotation;
 
     private string cameraDir;
 
-  //  [SerializeField] private AudioClip ghostRevealing;
+    [SerializeField] private AudioClip doorLocked;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +31,6 @@ public class RaySelect : MonoBehaviour
         if (Input.gyro.enabled)
         {
             lightSource.transform.rotation = ConvertRotation(Input.gyro.attitude);
-            //    lightSource.transform.Rotate(Vector3.right * 270, Space.World);
             RaycastHit hit;
             if (Physics.Raycast(lightSource.transform.position, lightSource.transform.forward, out hit))
             {
@@ -41,11 +39,11 @@ public class RaySelect : MonoBehaviour
                 createLight();
             }
             Debug.DrawRay(lightSource.transform.position, lightSource.transform.forward, Color.red, (1f / 60f));
-            testLight.transform.rotation = ConvertRotation(Input.gyro.attitude);
+           // testLight.transform.rotation = lightSource.transform.rotation;
             // Vector3 gyroRot = Input.gyro.rotationRate * rotateSpeed;
             if (GameObject.Find("door").GetComponent<BoxCollider>().bounds.Contains(hitpos))
             {
-          //      SoundManager.Instance.PlaySFX(ghostRevealing);
+        //        SoundManager.Instance.PlaySFX(doorLocked);
             }
         }
 
@@ -54,18 +52,19 @@ public class RaySelect : MonoBehaviour
     }
     void createLight()
     {
-        if(previousLight == null)
-        {
-            previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
-            previousLight.transform.eulerAngles = gyroRotation;
-            previousLight.transform.Rotate(Vector3.right * 90, Space.World);
-        }
-        else
+        cameraDir = camera.GetComponent<CameraList>().cameraDir;
+        if (previousLight != null)
         {
             Destroy(previousLight);
-            previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
-            previousLight.transform.eulerAngles = gyroRotation;
-            previousLight.transform.Rotate(Vector3.right * 90, Space.World);
+        }
+        previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
+        if (cameraDir.Equals("Forward"))
+        {
+            //previousLight.transform.Rotate(Vector3.right * 90, Space.World);
+        }
+        else if (cameraDir.Equals("Left"))
+        {
+            //previousLight.transform.Rotate((new Vector3(1, -1, 0)) * 90, Space.World);
         }
     }
 
@@ -83,7 +82,7 @@ public class RaySelect : MonoBehaviour
         {
             Quaternion target = Quaternion.Euler(0, -90, 0);
             camera.transform.rotation = Quaternion.Slerp(camera.transform.rotation, target, Time.deltaTime*smooth);
-            print(camera.transform.rotation);
+           // print(camera.transform.rotation);
             return Quaternion.Euler(90, -90, 0) * (new Quaternion(-q.x, -q.y, q.z, q.w));
         }
         else

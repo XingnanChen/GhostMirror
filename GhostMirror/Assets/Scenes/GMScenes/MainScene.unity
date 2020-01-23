@@ -178,6 +178,7 @@ MonoBehaviour:
   ray: {fileID: 640663687}
   smoothTime: 0.3
   velocity: {x: 0, y: 0, z: 0}
+  doorLocked: {fileID: 0}
 --- !u!114 &12588749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,6 +4169,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1225117706}
+    - target: {fileID: 3614822027643984417, guid: 5e3e1ed8e41548a44acd90d5ea799543,
+        type: 3}
+      propertyPath: doorLocked
+      value: 
+      objectReference: {fileID: 8300000, guid: 5329ba7dcd9285345b2dddbaf8fe0295, type: 3}
     - target: {fileID: 3614822027422509049, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_Enabled
@@ -5734,6 +5740,7 @@ MonoBehaviour:
   ray: {fileID: 640663687}
   smoothTime: 0.3
   velocity: {x: 0, y: 0, z: 0}
+  doorLocked: {fileID: 8300000, guid: 5329ba7dcd9285345b2dddbaf8fe0295, type: 3}
 --- !u!1 &956472559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 84d292b88053b7d42b369033f3aa2d9e,

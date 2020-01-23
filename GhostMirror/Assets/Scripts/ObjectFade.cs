@@ -17,6 +17,12 @@ public class ObjectFade : MonoBehaviour
     private Renderer picture1;
     private Renderer picture2;
     private Renderer picture2T;
+    private Renderer picture3T;
+    private Renderer picture4T;
+    private Renderer picture5T;
+    private Renderer picture6T;
+    private Renderer picture7T;
+    private Renderer picture8T;
     private void Start()
     {
         /*rend = GetComponent<Renderer>();
@@ -31,7 +37,7 @@ public class ObjectFade : MonoBehaviour
         photoRenderer.material.color = pc;
         ifRope = GameObject.Find("hanging_rope").GetComponent<Renderer>();
         ifRope.enabled = false;
-        hangingGhost = GameObject.Find("mouse_1.4_0").GetComponent<Renderer>();
+        hangingGhost = GameObject.Find("hanging_ghost_test").GetComponent<Renderer>();
         /*Color ghostColor = hangingGhost.material.color;
         ghostColor.a = 0f;
         hangingGhost.material.color = ghostColor;*/
@@ -40,6 +46,18 @@ public class ObjectFade : MonoBehaviour
         picture2 = GameObject.Find("picture (2)").GetComponent<Renderer>();
         picture2T = GameObject.Find("picture (8)").GetComponent<Renderer>();
         picture2T.enabled = false;
+        picture3T = GameObject.Find("picture (10)").GetComponent<Renderer>();
+        picture3T.enabled = false;
+        picture4T = GameObject.Find("picture (9)").GetComponent<Renderer>();
+        picture4T.enabled = false;
+        picture5T = GameObject.Find("picture (13)").GetComponent<Renderer>();
+        picture5T.enabled = false;
+        picture6T = GameObject.Find("picture (14)").GetComponent<Renderer>();
+        picture6T.enabled = false;
+        picture7T = GameObject.Find("picture (12)").GetComponent<Renderer>();
+        picture7T.enabled = false;
+        picture8T = GameObject.Find("picture (11)").GetComponent<Renderer>();
+        picture8T.enabled = false;
     }
 
     IEnumerator FadeIn()
@@ -154,12 +172,12 @@ public class ObjectFade : MonoBehaviour
 
         if(displayHanging == true)
         {
-            if(GameObject.Find("mouse_1.4_0").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            if(GameObject.Find("hanging_ghost_test").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
             {
                 //StartCoroutine("HangGhostFade");
                 hangingGhost.enabled = true;
             }
-            else if(GameObject.Find("mouse_1.4_0").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            else if(GameObject.Find("hanging_ghost_test").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
             {
                 //StartCoroutine("HangGhostFadeOut");
                 hangingGhost.enabled = false;
@@ -173,10 +191,60 @@ public class ObjectFade : MonoBehaviour
             {
                 picture2T.enabled = true;
             }
-            else
+            if (GameObject.Find("picture (2)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f)==false)
             {
                 picture2T.enabled = false;
             }
+            if (GameObject.Find("picture (3)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture3T.enabled = true;
+            }
+            if (GameObject.Find("picture (3)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture3T.enabled = false;
+            }
+            if (GameObject.Find("picture (4)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture4T.enabled = true;
+            }
+            if (GameObject.Find("picture (4)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture4T.enabled = false;
+            }
+            if (GameObject.Find("picture (5)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture5T.enabled = true;
+            }
+            if (GameObject.Find("picture (5)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture5T.enabled = false;
+            }
+            if (GameObject.Find("picture (6)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture6T.enabled = true;
+            }
+            if (GameObject.Find("picture (6)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture6T.enabled = false;
+            }
+            if (GameObject.Find("picture (7)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture7T.enabled = true;
+            }
+            if (GameObject.Find("picture (7)").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture7T.enabled = false;
+            }
+            if (GameObject.Find("picture").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f))
+            {
+                picture8T.enabled = true;
+            }
+            if (GameObject.Find("picture").GetComponent<BoxCollider>().Raycast(ray1, out hitInfo, 1000f) == false)
+            {
+                picture8T.enabled = false;
+            }
+
+
         }
 
 

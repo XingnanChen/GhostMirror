@@ -4180,6 +4180,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 576903193553906768, guid: 5d10b83d74d48b34f8bc8f7c3a71bdf4,
         type: 3}
+    - target: {fileID: 3614822027643984417, guid: 5e3e1ed8e41548a44acd90d5ea799543,
+        type: 3}
+      propertyPath: Up
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614822027643984417, guid: 5e3e1ed8e41548a44acd90d5ea799543,
+        type: 3}
+      propertyPath: Down
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614822027643984417, guid: 5e3e1ed8e41548a44acd90d5ea799543,
+        type: 3}
+      propertyPath: Left
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614822027643984417, guid: 5e3e1ed8e41548a44acd90d5ea799543,
+        type: 3}
+      propertyPath: Right
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3614822027422509049, guid: 5e3e1ed8e41548a44acd90d5ea799543,
         type: 3}
       propertyPath: m_Enabled
@@ -8573,7 +8593,7 @@ MonoBehaviour:
   useVolumetric: 1
   featuresFoldout: 1
   showAdditionalSettings: 0
-  displayLightIntensity: 60
+  displayLightIntensity: 80
   displayAreaLightEmissiveMesh: 0
   areaLightCookie: {fileID: 0}
   areaLightShadowCone: 120
@@ -8604,7 +8624,7 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.774648
+  m_Intensity: 6.3661976
   m_Range: 10
   m_SpotAngle: 94
   m_InnerSpotAngle: 21.80208

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class RaySelect : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class RaySelect : MonoBehaviour
     {
         if(!IsMobile)
         {
+            print(true);
             if (Input.GetKey(Up))
             {
                 lightSource.transform.Rotate(-40 * Time.deltaTime, 0.0f, 0.0f);
@@ -107,7 +109,7 @@ public class RaySelect : MonoBehaviour
         if (previousLight != null)
         {
             Destroy(previousLight);
-        }
+        }        
         previousLight = (GameObject)Instantiate(testLight, hitpos, Quaternion.identity);
         if (cameraDir.Equals("Forward"))
         {

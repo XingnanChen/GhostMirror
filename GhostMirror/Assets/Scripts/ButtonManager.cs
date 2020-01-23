@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour
     public float smoothTime = 0.3f;
     public Vector3 velocity = Vector3.zero;
     private bool cameraMoving = false;
+    [SerializeField] private AudioClip doorLocked;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +100,10 @@ public class ButtonManager : MonoBehaviour
             if (camera.transform.position == camPos)
             {
                 cameraMoving = false;
+                if (camera.GetComponent<CameraList>().parent.name.Equals("door"))
+                {
+                    SoundManager.Instance.PlaySFX(doorLocked);
+                }
             }
         }
         

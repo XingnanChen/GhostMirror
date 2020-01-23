@@ -38,6 +38,11 @@ public class ObjectFade : MonoBehaviour
     private bool timeEnd = false;
     private bool keyscaled = false;
     private Renderer trueHourRenderer;
+
+    [SerializeField] private AudioClip ghoshOut;
+    [SerializeField] private AudioClip handOut;
+    [SerializeField] private AudioClip exitPhotoGhostAppear;
+
     private void Start()
     {
         /*rend = GetComponent<Renderer>();
@@ -195,9 +200,12 @@ public class ObjectFade : MonoBehaviour
             collisionTime += Time.deltaTime;
             if(collisionTime >= 3f)
             {
+                SoundManager.Instance.PlaySFX(ghoshOut);
                 StartCoroutine("PhotoFadeIn");
                 FadeOut();
                 ifRope.enabled = true;
+
+                SoundManager.Instance.PlaySFX(exitPhotoGhostAppear);
                 displayHanging = true;
                 StartCoroutine("KeyFadeIn");
                 renderKey = true;
@@ -332,6 +340,7 @@ public class ObjectFade : MonoBehaviour
         {
             if(hourHand.transform.rotation.eulerAngles.z>=240 && hourHand.transform.rotation.eulerAngles.z<=245)
             {
+                SoundManager.Instance.PlaySFX(handOut);
                 trueHourRenderer.enabled = true;
                handRenderer.enabled = false;
             }

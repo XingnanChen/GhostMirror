@@ -479,3 +479,4 @@ MonoBehaviour:
     type: 3}
   lightSource: {fileID: 3614822027422509048}
   camera: {fileID: 0}
+  doorLocked: {fileID: 0}

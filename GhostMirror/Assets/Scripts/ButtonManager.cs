@@ -13,6 +13,8 @@ public class ButtonManager : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     private bool cameraMoving = false;
     [SerializeField] private AudioClip doorLocked;
+    [SerializeField] private AudioClip ghoshRevealing;
+
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +105,10 @@ public class ButtonManager : MonoBehaviour
                 if (camera.GetComponent<CameraList>().parent.name.Equals("door"))
                 {
                     SoundManager.Instance.PlaySFX(doorLocked);
+                }
+                if (camera.GetComponent<CameraList>().parent.name.Equals("mirror"))
+                {
+                    SoundManager.Instance.PlaySFX(ghoshRevealing);
                 }
             }
         }

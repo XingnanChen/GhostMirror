@@ -168,4 +168,8 @@ public class RaySelect : MonoBehaviour
     {
         return lightSource.transform.forward;
     }
+    public Quaternion GetLightRotation()
+    {
+        return lightSource.transform.rotation;
+    }
 }
